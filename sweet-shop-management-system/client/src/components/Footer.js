@@ -1,14 +1,1 @@
-import React from 'react';
-import './Footer.css'; // Assuming you have a CSS file for styling
-
-const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="container">
-                <p>&copy; {new Date().getFullYear()} Sweet Shop Management System. All rights reserved.</p>
-            </div>
-        </footer>
-    );
-};
-
-export default Footer;
+export { default } from './Footer.jsx';
