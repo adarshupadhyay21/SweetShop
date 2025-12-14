@@ -10,9 +10,10 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
-    "concurrently": "^6.0.0"
+    "concurrently": "^6.0.0",
+    "express": "^5.2.1",
+    "mongo": "^0.1.0"
   },
-  "devDependencies": {},
   "author": "Your Name",
   "license": "MIT"
 }

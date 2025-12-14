@@ -1,22 +1,17 @@
 const express = require('express');
 const router = express.Router();
+
 const SweetsController = require('../controllers/sweetsController');
+const sweetService = require('../services/sweetService');
 
-const sweetsController = new SweetsController();
+// ✅ Pass service into controller
+const sweetsController = new SweetsController(sweetService);
 
-// Route to get all sweets
-router.get('/', sweetsController.getAllSweets);
-
-// Route to add a new sweet
-router.post('/', sweetsController.addSweet);
-
-// Route to search sweets
-router.get('/search', sweetsController.searchSweets);
-
-// Route to update a sweet by ID
-router.put('/:id', sweetsController.updateSweet);
-
-// Route to delete a sweet by ID
-router.delete('/:id', sweetsController.deleteSweet);
+// ✅ Bind methods so `this` works
+router.get('/', sweetsController.getAllSweets.bind(sweetsController));
+router.post('/', sweetsController.addSweet.bind(sweetsController));
+router.get('/search/:query', sweetsController.searchSweets.bind(sweetsController));
+router.put('/:id', sweetsController.updateSweet.bind(sweetsController));
+router.delete('/:id', sweetsController.deleteSweet.bind(sweetsController));
 
 module.exports = router;

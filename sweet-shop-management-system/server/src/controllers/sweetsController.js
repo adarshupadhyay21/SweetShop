@@ -54,4 +54,5 @@ class SweetsController {
     }
 }
 
-export default SweetsController;
+module.exports = SweetsController;
+
