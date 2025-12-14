@@ -69,13 +69,11 @@ It is suitable as:
 
 * **Runtime:** Node.js (v18+)
 * **Framework:** Express.js
-* **Language:** TypeScript
 * **Database:** MongoDB
 * **ODM:** Mongoose
 * **Authentication:** JWT (jsonwebtoken)
 * **Password Hashing:** bcrypt
 * **Validation:** express-validator
-* **Testing:** Jest, Supertest
 
 ### Frontend
 
@@ -212,32 +210,7 @@ Frontend will run at:
 http://localhost:3000
 ```
 
----
 
-## 🧪 Testing
-
-### Backend Tests
-
-```bash
-npm test
-npm run test:watch
-npm run test:coverage
-```
-
-### Frontend Tests
-
-```bash
-npm test
-npm run test:coverage
-```
-
-Testing includes:
-
-* Unit tests for services
-* Integration tests for APIs
-* Authentication & authorization scenarios
-
----
 
 ## 📚 API Documentation
 
