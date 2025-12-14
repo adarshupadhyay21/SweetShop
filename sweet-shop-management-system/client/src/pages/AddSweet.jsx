@@ -1,5 +1,5 @@
 import React from 'react';
-import SweetForm from '../components/SweetForm';
+import SweetForm from '../components/SweetForm.jsx';
 import { useHistory } from 'react-router-dom';
 
 const AddSweet = () => {

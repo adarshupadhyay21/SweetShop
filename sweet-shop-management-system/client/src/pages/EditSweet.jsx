@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SweetForm from '../components/SweetForm';
-import { getSweetById } from '../api/api';
+import SweetForm from '../components/SweetForm.jsx';
+import { getSweetById } from '../api/api.js';
 import { useHistory, useParams } from 'react-router-dom';
 
 const EditSweet = () => {

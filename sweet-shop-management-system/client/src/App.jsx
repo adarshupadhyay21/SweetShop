@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Dashboard from './pages/Dashboard';
-import SweetDetails from './pages/SweetDetails';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import AddSweet from './pages/AddSweet';
-import EditSweet from './pages/EditSweet';
-import Users from './pages/Users';
+import PrivateRoute from './components/PrivateRoute.jsx';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import SweetDetails from './pages/SweetDetails.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import AddSweet from './pages/AddSweet.jsx';
+import EditSweet from './pages/EditSweet.jsx';
+import Users from './pages/Users.jsx';
 import './styles/main.css';
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { login } from '../api/api';
+import { login } from '../api/api.js';
 import { setAuth } from '../utils/auth';
 
 const Login = () => {

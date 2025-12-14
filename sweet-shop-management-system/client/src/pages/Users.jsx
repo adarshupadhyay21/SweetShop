@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, promoteUser } from '../api/admin';
+import { getUsers, promoteUser } from '../api/api.js';
 import { isAdmin } from '../utils/auth';
 
 const Users = () => {
@@ -46,15 +46,20 @@ const Users = () => {
                                 <td className="py-2 capitalize">{u.role}</td>
                                 <td className="py-2">
                                     {u.role !== 'admin' && (
-                                        <button className="bg-blue-600 text-white rounded px-3 py-1" onClick={async () => {
-                                            if (!window.confirm(`Promote ${u.email} to admin?`)) return;
-                                            try {
-                                                await promoteUser(u._id);
-                                                setUsers(prev => prev.map(p => p._id === u._id ? { ...p, role: 'admin' } : p));
-                                            } catch (err) {
-                                                alert(err.response?.data?.message || err.message);
-                                            }
-                                        }}>Promote</button>
+                                        <button
+                                            className="bg-blue-600 text-white rounded px-3 py-1"
+                                            onClick={async () => {
+                                                if (!window.confirm(`Promote ${u.email} to admin?`)) return;
+                                                try {
+                                                    await promoteUser(u._id);
+                                                    setUsers(prev => prev.map(p => (p._id === u._id ? { ...p, role: 'admin' } : p)));
+                                                } catch (err) {
+                                                    alert(err.response?.data?.message || err.message);
+                                                }
+                                            }}
+                                        >
+                                            Promote
+                                        </button>
                                     )}
                                 </td>
                             </tr>
@@ -62,73 +67,6 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
-    );
-};
-
-export default Users;
-import React, { useEffect, useState } from 'react';
-import { getUsers, promoteUser } from '../api/admin';
-import { isAdmin } from '../utils/auth';
-
-const Users = () => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        if (!isAdmin()) return setError('Admin access required');
-        const fetch = async () => {
-            try {
-                const data = await getUsers();
-                setUsers(data);
-            } catch (err) {
-                setError(err.response?.data?.message || err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetch();
-    }, []);
-
-    if (loading) return <div className="container">Loading users...</div>;
-    if (error) return <div className="container">{error}</div>;
-
-    return (
-        <div className="container">
-            <h2>Users</h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                    <tr style={{ textAlign: 'left' }}>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(u => (
-                        <tr key={u._id} style={{ borderTop: '1px solid #eee' }}>
-                            <td>{u.name}</td>
-                            <td>{u.email}</td>
-                            <td style={{ textTransform: 'capitalize' }}>{u.role}</td>
-                            <td>
-                                {u.role !== 'admin' && (
-                                    <button className="btn btn-primary" onClick={async () => {
-                                        if (!window.confirm(`Promote ${u.email} to admin?`)) return;
-                                        try {
-                                            await promoteUser(u._id);
-                                            setUsers(prev => prev.map(p => p._id === u._id ? { ...p, role: 'admin' } : p));
-                                        } catch (err) {
-                                            alert(err.response?.data?.message || err.message);
-                                        }
-                                    }}>Promote</button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
         </div>
     );
 };

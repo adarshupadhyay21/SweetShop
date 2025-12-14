@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getSweetById, purchaseSweet, restockSweet } from '../api/api';
+import { getSweetById, purchaseSweet, restockSweet } from '../api/api.js';
 import { isAdmin, isAuthenticated } from '../utils/auth';
 
 const SweetDetails = () => {
